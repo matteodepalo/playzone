@@ -11,7 +11,7 @@ if [[ -z "$MESSAGE" ]]; then
 	MESSAGE="deployed on `date`"
 fi
 
-echo "[info] running: cp ./playzone ./playzone-deploy"
+echo "[info] running: cp -Rf ./playzone ./playzone-deploy"
 cp -Rf . ../playzone-deploy
 cd ../playzone-deploy
 
