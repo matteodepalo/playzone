@@ -7,7 +7,7 @@
 		revision="1.0-SNAPSHOT"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
-		date="20121226123929"/>
+		date="20121226130134"/>
 	<dependencies>
 		<module organisation="commons-codec" name="commons-codec">
 			<revision name="1.6" status="release" pubdate="20111203033826" resolver="public" artresolver="public" homepage="http://commons.apache.org/codec/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="67">
@@ -100,12 +100,12 @@
 			</revision>
 		</module>
 		<module organisation="mysql" name="mysql-connector-java">
-			<revision name="5.1.18" status="release" pubdate="20121011094020" resolver="Typesafe Releases Repository" artresolver="Typesafe Releases Repository" homepage="http://dev.mysql.com/usingmysql/java/" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="49">
+			<revision name="5.1.18" status="release" pubdate="20121011094020" resolver="Typesafe Releases Repository" artresolver="Typesafe Releases Repository" homepage="http://dev.mysql.com/usingmysql/java/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="49">
 				<license name="The GNU General Public License, Version 2" url="http://www.gnu.org/licenses/gpl.txt"/>
-				<metadata-artifact status="successful" details="" size="1263" time="605" location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/ivy-5.1.18.xml" searched="true" original-local-location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/ivy-5.1.18.xml.original" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.pom"/>
+				<metadata-artifact status="no" details="" size="2387" time="0" location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/ivy-5.1.18.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.pom"/>
 				<caller organisation="playzone" name="playzone_2.10" conf="test, compile, runtime" rev="5.1.18" rev-constraint-default="5.1.18" rev-constraint-dynamic="5.1.18" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="mysql-connector-java" type="jar" ext="jar" status="successful" details="" size="789885" time="3023" location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.18.jar">
+					<artifact name="mysql-connector-java" type="jar" ext="jar" status="no" details="" size="789885" time="0" location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.18.jar">
 						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/releases/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar"/>
 					</artifact>
 				</artifacts>
