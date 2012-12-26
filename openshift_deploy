@@ -19,6 +19,9 @@ else
 	play clean compile stage
 fi
 
+echo "[info] running: git checkout master"
+git checkout master
+
 echo "[info] running: git add . -A"
 git add . -A
 
