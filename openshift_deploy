@@ -11,6 +11,9 @@ if [[ -z "$MESSAGE" ]]; then
 	MESSAGE="deployed on `date`"
 fi
 
+echo "[info] running: git checkout master"
+git checkout master
+
 if [[ "$QUICK" == "-q" ]] || [[ "$QUICK" == "-Q" ]]; then
   echo "[info] running: play stage"
   play stage
@@ -22,9 +25,6 @@ fi
 echo "[info] running: cp -Rf . ../playzone"
 cp -Rf ./target ../playzone/target
 cd ../playzone
-
-echo "[info] running: git checkout master"
-git checkout master
 
 echo "[info] running: git add . -A"
 git add . -A
