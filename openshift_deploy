@@ -19,6 +19,10 @@ else
 	play clean compile stage
 fi
 
+echo "[info] running: cp ./playzone ./playzone-deploy"
+cp -Rf . ../playzone-deploy
+cd ../playzone-deploy
+
 echo "[info] running: git checkout master"
 git checkout master
 
