@@ -7,8 +7,20 @@
 		revision="1.0-SNAPSHOT"
 		conf="compile-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
-		date="20121226122401"/>
+		date="20121226123929"/>
 	<dependencies>
+		<module organisation="mysql" name="mysql-connector-java">
+			<revision name="5.1.18" status="release" pubdate="20121011094020" resolver="Typesafe Releases Repository" artresolver="Typesafe Releases Repository" homepage="http://dev.mysql.com/usingmysql/java/" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="52">
+				<license name="The GNU General Public License, Version 2" url="http://www.gnu.org/licenses/gpl.txt"/>
+				<metadata-artifact status="successful" details="" size="1263" time="605" location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/ivy-5.1.18.xml" searched="true" original-local-location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/ivy-5.1.18.xml.original" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.pom"/>
+				<caller organisation="playzone" name="playzone_2.10" conf="optional, compile, provided, compile-internal" rev="5.1.18" rev-constraint-default="5.1.18" rev-constraint-dynamic="5.1.18" callerrev="1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="mysql-connector-java" type="jar" ext="jar" status="successful" details="" size="789885" time="3023" location="/usr/local/Play20/framework/../repository/cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.18.jar">
+						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/releases/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
 		<module organisation="play" name="anorm_2.10">
 			<revision name="2.1-SNAPSHOT" status="integration" pubdate="20121225175026" resolver="local" artresolver="local" downloaded="false" searched="true" default="false" conf="default(compile), compile" position="51">
 				<metadata-artifact status="no" details="" size="1738" time="0" location="/usr/local/Play20/framework/../repository/cache/play/anorm_2.10/ivy-2.1-SNAPSHOT.xml" searched="true" origin-is-local="true" origin-location="/usr/local/Play20/repository/local/play/anorm_2.10/2.1-SNAPSHOT/ivys/ivy.xml"/>
