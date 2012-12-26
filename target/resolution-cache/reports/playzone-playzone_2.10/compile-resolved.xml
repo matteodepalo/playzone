@@ -7,7 +7,7 @@
 		revision="1.0-SNAPSHOT"
 		conf="compile"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
-		date="20121226135710"/>
+		date="20121226142524"/>
 	<dependencies>
 		<module organisation="mysql" name="mysql-connector-java">
 			<revision name="5.1.18" status="release" pubdate="20121011094020" resolver="Typesafe Releases Repository" artresolver="Typesafe Releases Repository" homepage="http://dev.mysql.com/usingmysql/java/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="52">
