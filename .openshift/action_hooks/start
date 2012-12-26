@@ -5,7 +5,7 @@
 
 
 # loads $PLAY_PARAMS
-. ${OPENSHIFT_REPO_DIR}-deploy/.openshift/action_hooks/load_config
+. ${OPENSHIFT_REPO_DIR}.openshift/action_hooks/load_config
 
 if [[ ! $? -eq 0 ]]; then
 	exit $?
@@ -13,9 +13,9 @@ fi
 
 LOG_FILE="${OPENSHIFT_DIY_LOG_DIR}play.log"
 
-chmod +x ${OPENSHIFT_REPO_DIR}-deploy/target/start
+chmod +x ${OPENSHIFT_REPO_DIR}target/start
 
-APP_COMMAND="${OPENSHIFT_REPO_DIR}-deploy/target/start $PLAY_PARAMS "\
+APP_COMMAND="${OPENSHIFT_REPO_DIR}target/start $PLAY_PARAMS "\
 "-Dhttp.port=${OPENSHIFT_DIY_PORT} "\
 "-Dhttp.address=${OPENSHIFT_DIY_IP} "\
 "-Dconfig.resource=openshift.conf"

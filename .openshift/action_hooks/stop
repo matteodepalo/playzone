@@ -29,7 +29,7 @@ if [[ ! $? -eq 0 ]]; then
 	exit $?
 fi
 
-pushd "${OPENSHIFT_REPO_DIR}-deploy" > /dev/null
+pushd "$OPENSHIFT_REPO_DIR" > /dev/null
 
 #kill play if it was running
 if [[ -f "RUNNING_PID" ]]; then
