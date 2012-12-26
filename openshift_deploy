@@ -23,8 +23,8 @@ else
 fi
 
 echo "[info] running: cp -Rf . ../playzone"
-cp -Rf ./target ../playzone
-cd ../playzone
+cp -Rf ./target ../playzone-target
+cd ../playzone-target
 
 echo "[info] running: git add . -A"
 git add . -A
