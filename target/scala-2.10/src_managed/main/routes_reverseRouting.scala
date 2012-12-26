@@ -1,6 +1,6 @@
 // @SOURCE:/Users/matteodepalo/Projects/playzone/conf/routes
 // @HASH:299c488dd708f7918d2a8ba9f1482721898f373a
-// @DATE:Wed Dec 26 12:39:29 CET 2012
+// @DATE:Wed Dec 26 13:36:47 CET 2012
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
