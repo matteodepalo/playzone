@@ -3,8 +3,8 @@
 # --- !Ups
 
 CREATE TABLE round (
-    id integer NOT NULL auto_increment PRIMARY KEY,
-    game varchar(255)
+  id integer NOT NULL auto_increment PRIMARY KEY,
+  game varchar(255)
 );
  
 # --- !Downs

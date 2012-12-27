@@ -11,22 +11,26 @@ object Rounds extends Controller {
     "game" -> nonEmptyText
   )
 
-  def rounds = Action {
-    Ok(views.html.rounds.index(Round.all(), roundForm))
+  def index = Action {
+    Ok(views.html.rounds.index(Round.all()))
+  }
+
+  def build = Action {
+    Ok(views.html.rounds.build(roundForm))
   }
   
-  def newRound = Action { implicit request =>
+  def create = Action { implicit request =>
     roundForm.bindFromRequest.fold(
-      errors => BadRequest(views.html.rounds.index(Round.all(), errors)),
+      errors => BadRequest(views.html.rounds.build(errors)),
       label => {
         Round.create(label)
-        Redirect(routes.Rounds.rounds)
+        Redirect(routes.Rounds.index)
       }
     )
   }
   
-  def deleteRound(id: Long) = Action {
+  def destroy(id: Long) = Action {
     Round.delete(id)
-    Redirect(routes.Rounds.rounds)
+    Redirect(routes.Rounds.index)
   }
 }

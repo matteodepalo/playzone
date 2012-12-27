@@ -1,4 +1,20 @@
-@(rounds: List[Round], roundForm: Form[String])
+@(rounds: List[Round])
+
+@import helper._
+@import helper.twitterBootstrap._
 
 @main("Rounds") {
+  <ul>
+    @rounds.map { round =>
+      <li>
+        @round.game
+
+        @form(routes.Rounds.destroy(round.id)) {
+          <input type="submit" class="btn" value="Delete Round">
+        }
+      </li>
+    }
+  </ul>
+
+  <a class="btn" href="@routes.Rounds.build">Create a new Round</a>
 }
