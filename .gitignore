@@ -10,3 +10,5 @@ dist
 .classpath
 .project
 .settings
+.idea
+.idea_modules
