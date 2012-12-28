@@ -1,0 +1,12 @@
+@(roundForm: Form[String])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Create a new Round") {
+  @form(routes.Rounds.create) {
+    @inputText(roundForm("game"))
+
+    <input type="submit" class="btn" value="Create Round">
+  }
+}
