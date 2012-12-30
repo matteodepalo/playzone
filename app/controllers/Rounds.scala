@@ -8,7 +8,7 @@ import models.Round
 
 object Rounds extends Controller {
   val roundForm = Form(
-    "game" -> nonEmptyText
+    "game_id" -> longNumber
   )
 
   def index = Action {
@@ -22,8 +22,8 @@ object Rounds extends Controller {
   def create = Action { implicit request =>
     roundForm.bindFromRequest.fold(
       errors => BadRequest(views.html.rounds.build(errors)),
-      label => {
-        Round.create(label)
+      game_id => {
+        Round.create(game_id)
         Redirect(routes.Rounds.index)
       }
     )

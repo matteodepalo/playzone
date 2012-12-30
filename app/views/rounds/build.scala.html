@@ -1,11 +1,11 @@
-@(roundForm: Form[String])
+@(roundForm: Form[Long])
 
 @import helper._
-@import helper.twitterBootstrap._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
 
 @main("Create a new Round") {
   @form(routes.Rounds.create) {
-    @inputText(roundForm("game"))
+    @select(field = roundForm("game_id"), options = (options(Game.all.map(game => (game.id.toString, game.name)).toMap)))
 
     <input type="submit" class="btn" value="Create Round">
   }

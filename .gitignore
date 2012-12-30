@@ -13,3 +13,4 @@ dist
 .idea
 .idea_modules
 playzone.iml
+.env

@@ -5,13 +5,17 @@ import anorm.SqlParser._
 import play.api.db._
 import play.api.Play.current
 
-case class Round(id: Long, game: String)
+case class Round(id: Long, game_id: Long) {
+  def game = {
+    Game.find(this.game_id)
+  }
+}
 
 object Round {
   val round = {
     get[Long]("id") ~ 
-    get[String]("game") map {
-      case id~game => Round(id, game)
+    get[Long]("game_id") map {
+      case id~game_id => Round(id, game_id)
     }
   }
 
@@ -19,10 +23,10 @@ object Round {
     SQL("select * from round").as(round *)
   }
 
-  def create(game: String) {
+  def create(game_id: Long) {
     DB.withConnection { implicit c =>
-      SQL("insert into round (game) values ({game})").on(
-        'game -> game
+      SQL("insert into round (game_id) values ({game_id})").on(
+        'game_id -> game_id
       ).executeUpdate()
     }
   }

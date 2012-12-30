@@ -7,7 +7,7 @@
   <ul>
     @rounds.map { round =>
       <li>
-        @round.game
+        @round.game.name
 
         @form(routes.Rounds.destroy(round.id)) {
           <input type="submit" class="btn" value="Delete Round">
