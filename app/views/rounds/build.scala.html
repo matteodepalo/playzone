@@ -4,6 +4,8 @@
 @import helper.twitterBootstrap._
 
 @main("Create a new Round") {
+  <h1>New Round</h1>
+  
   @form(routes.Rounds.create) {
     @select(
       field = roundForm("game_id"),
