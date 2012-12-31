@@ -4,10 +4,7 @@ import play.api.mvc._
 import play.api.Play
 
 trait Controller extends play.api.mvc.Controller {
-  val adminPassword = Play.current.configuration.getString("adminPassword") match {
-    case Some(x) => x
-    case None => "1234secret" 
-  }
+  val adminPassword = Play.current.configuration.getString("adminPassword").getOrElse("1234secret")
 
   def Secured[A](username: String, password: String)(action: Action[A]) = Action(action.parser) { request =>
     request.headers.get("Authorization").flatMap { authorization =>
@@ -18,7 +15,7 @@ trait Controller extends play.api.mvc.Controller {
         }
       }.map(_ => action(request))
     }.getOrElse {
-      Unauthorized.withHeaders("WWW-Authenticate" -> """Basic realm="Secured"""")
+      Unauthorized.withHeaders("WWW-Authenticate" -> "Basic realm=\"Secured\"")
     }
   }
 }
