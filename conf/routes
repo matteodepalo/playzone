@@ -1,15 +1,11 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
+GET / controllers.Application.index
 
-# Home page
-GET     /                       controllers.Application.index
+GET /rounds controllers.Rounds.index
+GET /rounds/new controllers.Rounds.build
+POST /rounds controllers.Rounds.create
+POST /rounds/:id/delete controllers.Rounds.destroy(id: Long)
 
-# Tasks          
-GET     /rounds                 controllers.Rounds.index
-GET     /rounds/new             controllers.Rounds.build
-POST    /rounds                 controllers.Rounds.create
-POST    /rounds/:id/delete      controllers.Rounds.destroy(id: Long)
+GET /games/new controllers.Games.build
+POST /games controllers.Games.create
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file           controllers.Assets.at(path="/public", file)
+GET /assets/*file controllers.Assets.at(path="/public", file)

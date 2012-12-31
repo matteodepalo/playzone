@@ -1,0 +1,14 @@
+@(gameForm: Form[String])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Create a new Game") {
+  <h1>New Game</h1>
+  
+  @form(routes.Games.create) {
+    @inputText(gameForm("name"))
+
+    <input type="submit" class="btn" value="Create Game">
+  }
+}
