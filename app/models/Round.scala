@@ -12,7 +12,7 @@ case class Round(id: Long, game_id: Long) {
 }
 
 object Round {
-  val round = {
+  val parser = {
     get[Long]("id") ~ 
     get[Long]("game_id") map {
       case id~game_id => Round(id, game_id)
@@ -20,7 +20,7 @@ object Round {
   }
 
   def all(): List[Round] = DB.withConnection { implicit c =>
-    SQL("select * from round").as(round *)
+    SQL("select * from round").as(parser *)
   }
 
   def create(game_id: Long) {

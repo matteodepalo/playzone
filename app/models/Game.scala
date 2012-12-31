@@ -8,7 +8,7 @@ import play.api.Play.current
 case class Game(id: Long, name: String)
 
 object Game {
-  val game = {
+  val parser = {
     get[Long]("id") ~ 
     get[String]("name") map {
       case id~name => Game(id, name)
@@ -16,13 +16,13 @@ object Game {
   }
 
   def all(): List[Game] = DB.withConnection { implicit c =>
-    SQL("select * from game").as(game *)
+    SQL("select * from game").as(parser *)
   }
 
   def find(id: Long) = DB.withConnection { implicit c => 
     SQL("select * from game where id = {id}").on(
       'id -> id
-    ).as(game.single)
+    ).as(parser.single)
   }
 
   def create(name: String) {
