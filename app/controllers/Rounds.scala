@@ -24,13 +24,13 @@ object Rounds extends Controller {
       errors => BadRequest(views.html.rounds.build(errors)),
       game_id => {
         Round.create(game_id)
-        Redirect(routes.Rounds.index)
+        Redirect(routes.Rounds.index())
       }
     )
   }
   
   def destroy(id: Long) = Action {
     Round.delete(id)
-    Redirect(routes.Rounds.index)
+    Redirect(routes.Rounds.index())
   }
 }

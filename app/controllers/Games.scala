@@ -23,7 +23,7 @@ object Games extends Controller {
         errors => BadRequest(views.html.games.build(errors)),
         name => {
           Game.create(name)
-          Redirect(routes.Rounds.index)
+          Redirect(routes.Rounds.index())
         }
       )
     }
