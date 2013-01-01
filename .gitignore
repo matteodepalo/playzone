@@ -14,3 +14,6 @@ dist
 .idea_modules
 playzone.iml
 .env
+.cache
+bin
+.target
