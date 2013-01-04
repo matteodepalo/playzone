@@ -2,10 +2,15 @@ package models
 
 import anorm._
 import anorm.SqlParser._
+import play.api.PlayException
 import play.api.db._
 import play.api.Play.current
 
-case class Game(id: Long, name: String)
+case class Game(id: Long, name: String) {
+  def destroy = {
+    Game.delete(this.id)
+  }
+}
 
 object Game {
   val parser = {
@@ -25,11 +30,14 @@ object Game {
     ).as(parser.single)
   }
 
-  def create(name: String) {
+  def create(name: String): Long = {
     DB.withConnection { implicit c =>
       SQL("insert into game (name) values ({name})").on(
         'name -> name
-      ).executeUpdate()
+      ).executeInsert() match {
+        case Some(long) => long
+        case None => throw new PlayException("Error creating game", "There was a problem creating the game");
+      }
     }
   }
 
