@@ -39,7 +39,7 @@ object Auth extends Controller {
   def callback() = Action { implicit request =>
     params("code").flatMap { code =>
       FACEBOOK.authenticate(code) map { user =>
-        val user_id = User.create(user.name, user.email)
+        val user_id = Option(User.findByEmail(user.email)).map(_.id).getOrElse(User.create(user.name, user.email))
         Redirect(routes.Application.index()).withSession("user_id" -> user_id.toString)
       }
     } getOrElse Redirect(routes.Application.index())

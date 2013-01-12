@@ -34,4 +34,10 @@ object User {
       }
     }
   }
+
+  def findByEmail(email: String) = DB.withConnection { implicit c =>
+    SQL("select * from \"user\" where email = {email}").on(
+      'email -> email
+    ).as(parser.single)
+  }
 }

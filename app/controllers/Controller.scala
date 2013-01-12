@@ -7,8 +7,12 @@ import models.User
 trait Controller extends play.api.mvc.Controller {
   val adminPassword = Play.current.configuration.getString("adminPassword").getOrElse("1234secret")
 
-  def currentUser(implicit request: RequestHeader): Option[User] =
-    Option(User.find(session.get("user_id").map(_.toLong).get))
+  def currentUser(implicit request: RequestHeader): Option[User] = {
+    session.get("user_id").map(_.toLong) match {
+      case Some(id) => Option(User.find(id))
+      case None => None
+    }
+  }
 
   def Secured[A](username: String, password: String)(action: Action[A]) = Action(action.parser) { request =>
     request.headers.get("Authorization").flatMap { authorization =>
