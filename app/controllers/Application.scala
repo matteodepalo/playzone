@@ -4,7 +4,7 @@ import play.api._
 import play.api.mvc._
 
 object Application extends Controller {
-  def index = Action {
-    Ok(views.html.index())
+  def index = Action { implicit request =>
+    Ok(views.html.index(currentUser))
   }
 }

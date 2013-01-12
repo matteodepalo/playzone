@@ -1,9 +1,9 @@
-@(gameForm: Form[String])
+@(gameForm: Form[String], currentUser: Option[User])
 
 @import helper._
 @import helper.twitterBootstrap._
 
-@main("Create a new Game") {
+@main("Create a new Game", currentUser) {
   <h1>New Game</h1>
   
   @form(routes.Games.create) {

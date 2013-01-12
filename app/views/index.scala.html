@@ -1,4 +1,6 @@
-@main("Playzone") {
+@(currentUser: Option[User])
+
+@main("Playzone", currentUser) {
   <div class="visual">
     <h1>Find matches for the games you love around you!</h1>
     

@@ -11,8 +11,8 @@ case class Round(id: Long, game_id: Long) {
     Game.find(this.game_id)
   }
   
-  def destroy = {
-    Round.delete(this.id)
+  def destroy() {
+    Round.destroy(this.id)
   }
 }
 
@@ -45,11 +45,17 @@ object Round {
     }
   }
 
-  def delete(id: Long) {
+  def destroy(id: Long) {
     DB.withConnection { implicit c =>
       SQL("delete from round where id = {id}").on(
         'id -> id
       ).executeUpdate()
+    }
+  }
+
+  def destroyAll() {
+    DB.withConnection { implicit c =>
+      SQL("delete from round").executeUpdate()
     }
   }
 }

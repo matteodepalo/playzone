@@ -7,8 +7,8 @@ import play.api.db._
 import play.api.Play.current
 
 case class Game(id: Long, name: String) {
-  def destroy = {
-    Game.delete(this.id)
+  def destroy() {
+    Game.destroy(this.id)
   }
 }
 
@@ -41,7 +41,7 @@ object Game {
     }
   }
 
-  def delete(id: Long) {
+  def destroy(id: Long) {
     DB.withConnection { implicit c =>
       SQL("delete from game where id = {id}").on(
         'id -> id

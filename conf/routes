@@ -1,5 +1,9 @@
 GET / controllers.Application.index
 
+GET /auth/signin controllers.Auth.signin
+GET /auth/signout controllers.Auth.signout
+GET /auth/callback controllers.Auth.callback
+
 GET /rounds controllers.Rounds.index
 GET /rounds/new controllers.Rounds.build
 POST /rounds controllers.Rounds.create
@@ -7,5 +11,7 @@ POST /rounds/:id/delete controllers.Rounds.destroy(id: Long)
 
 GET /games/new controllers.Games.build
 POST /games controllers.Games.create
+
+GET /users/:id controllers.Users.show(id: Long)
 
 GET /assets/*file controllers.Assets.at(path="/public", file)
