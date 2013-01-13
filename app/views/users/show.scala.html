@@ -1,3 +1,5 @@
-@(user: User)
+@(user: User)(implicit currentUser: Option[User])
 
-@user.name
+@main("@user.name") {
+  <h1>@user.name</h1>
+}
