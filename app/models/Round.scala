@@ -2,13 +2,12 @@ package models
 
 import anorm._
 import anorm.SqlParser._
-import play.api.PlayException
 import play.api.db._
 import play.api.Play.current
 
 case class Round(id: Long, game_id: Long) {
   def game = {
-    Game.find(this.game_id)
+    Game.find(this.game_id).get
   }
   
   def destroy() {
@@ -31,17 +30,14 @@ object Round {
   def find(id: Long) = DB.withConnection { implicit c => 
     SQL("select * from round where id = {id}").on(
       'id -> id
-    ).as(parser.single)
+    ).as(parser.singleOpt)
   }
 
   def create(game_id: Long): Long = {
     DB.withConnection { implicit c =>
       SQL("insert into round (game_id) values ({game_id})").on(
         'game_id -> game_id
-      ).executeInsert() match {
-        case Some(long) => long
-        case None => throw new PlayException("Error creating round", "There was a problem creating the round");
-      }
+      ).executeInsert((get[Long]("id").single))
     }
   }
 

@@ -27,17 +27,14 @@ object Game {
   def find(id: Long) = DB.withConnection { implicit c => 
     SQL("select * from game where id = {id}").on(
       'id -> id
-    ).as(parser.single)
+    ).as(parser.singleOpt)
   }
 
   def create(name: String): Long = {
     DB.withConnection { implicit c =>
       SQL("insert into game (name) values ({name})").on(
         'name -> name
-      ).executeInsert() match {
-        case Some(long) => long
-        case None => throw new PlayException("Error creating game", "There was a problem creating the game");
-      }
+      ).executeInsert((get[Long]("id").single))
     }
   }
 

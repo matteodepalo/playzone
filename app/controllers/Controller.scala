@@ -9,7 +9,7 @@ trait Controller extends play.api.mvc.Controller {
 
   def currentUser(implicit request: RequestHeader): Option[User] = {
     session.get("user_id").map(_.toLong) match {
-      case Some(id) => Option(User.find(id))
+      case Some(id) => User.find(id)
       case None => None
     }
   }
