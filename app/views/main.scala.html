@@ -18,6 +18,7 @@
         <ul class="nav nav-pills pull-right">
           @currentUser.map { user =>
             <li><a href="@routes.Users.show(user.id)">@user.name</a></li>
+            <li><a href="@routes.Auth.signout">Logout</a></li>
           }.getOrElse {
             <li><a href="@routes.Auth.signin">Login</a></li>
           }
