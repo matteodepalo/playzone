@@ -1,9 +1,9 @@
-@(rounds: List[Round], currentUser: Option[User])
+@(rounds: List[Round])(implicit currentUser: Option[User])
 
 @import helper._
 @import helper.twitterBootstrap._
 
-@main("Rounds", currentUser) {
+@main("Rounds") {
   <h1>List of Rounds</h1>
   
   <ul>

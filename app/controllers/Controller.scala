@@ -7,7 +7,7 @@ import models.User
 trait Controller extends play.api.mvc.Controller {
   val adminPassword = Play.current.configuration.getString("adminPassword").getOrElse("1234secret")
 
-  def currentUser(implicit request: RequestHeader): Option[User] = {
+  implicit def currentUser(implicit request: RequestHeader): Option[User] = {
     session.get("user_id").map(_.toLong) match {
       case Some(id) => User.find(id)
       case None => None

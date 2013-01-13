@@ -1,9 +1,9 @@
-@(roundForm: Form[Long], currentUser: Option[User])
+@(roundForm: Form[Long])(implicit currentUser: Option[User])
 
 @import helper._
 @import helper.twitterBootstrap._
 
-@main("Create a new Round", currentUser) {
+@main("Create a new Round") {
   <h1>New Round</h1>
   
   @form(routes.Rounds.create) {

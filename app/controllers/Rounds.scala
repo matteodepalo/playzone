@@ -12,16 +12,16 @@ object Rounds extends Controller {
   )
 
   def index = Action { implicit request =>
-    Ok(views.html.rounds.index(Round.all(), currentUser))
+    Ok(views.html.rounds.index(Round.all()))
   }
 
   def build = Action { implicit request =>
-    Ok(views.html.rounds.build(roundForm, currentUser))
+    Ok(views.html.rounds.build(roundForm))
   }
   
   def create = Action { implicit request =>
     roundForm.bindFromRequest.fold(
-      errors => BadRequest(views.html.rounds.build(errors, currentUser)),
+      errors => BadRequest(views.html.rounds.build(errors)),
       game_id => {
         Round.create(game_id)
         Redirect(routes.Rounds.index())

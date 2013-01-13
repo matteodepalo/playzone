@@ -13,14 +13,14 @@ object Games extends Controller {
 
   def build = Secured("admin", adminPassword) {
     Action { implicit request =>
-      Ok(views.html.games.build(gameForm, currentUser))
+      Ok(views.html.games.build(gameForm))
     }
   }
 
   def create = Secured("admin", adminPassword) {
     Action { implicit request =>
       gameForm.bindFromRequest.fold(
-        errors => BadRequest(views.html.games.build(errors, currentUser)),
+        errors => BadRequest(views.html.games.build(errors)),
         name => {
           Game.create(name)
           Redirect(routes.Rounds.index())
