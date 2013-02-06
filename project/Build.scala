@@ -1,13 +1,15 @@
 import sbt._
 import Keys._
-import PlayProject._
+import play.Project._
 
 object ApplicationBuild extends Build {
   val appName         = "playzone"
-  val appVersion      = "1.0-SNAPSHOT"
+  val appVersion      = "1.0"
 
   val appDependencies = Seq(
-    "postgresql" % "postgresql" % "9.1-901.jdbc4"
+    "postgresql" % "postgresql" % "9.1-901.jdbc4",
+    jdbc,
+    anorm
   )
 
   def customLessEntryPoints(base: File): PathFinder = (
@@ -16,7 +18,7 @@ object ApplicationBuild extends Build {
     (base / "app" / "assets" / "stylesheets" * "*.less")
   )
 
-  val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
+  val main = play.Project(appName, appVersion, appDependencies).settings(
     lessEntryPoints <<= baseDirectory(customLessEntryPoints)
   )
 }

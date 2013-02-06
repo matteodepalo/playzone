@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.api.libs.json
 import play.api.libs.json._
 import lib._
 import models.User
@@ -16,7 +17,7 @@ object Auth extends Controller {
     Play.current.configuration.getString("application.host").get + routes.Auth.callback,
     "email"
   )) {
-    def user(body: String) = Json.fromJson(Json.parse(body))
+    def user(body: String) = Json.fromJson(Json.parse(body)).get
   }
 
   case class FacebookUser(
@@ -25,11 +26,13 @@ object Auth extends Controller {
   )
 
   implicit def FacebookUserReads: Reads[FacebookUser] = new Reads[FacebookUser] {
-    def reads(json: JsValue) =
+    def reads(json: JsValue): JsResult[FacebookUser] =
+    JsSuccess(
       FacebookUser(
         (json \ "name").as[String],
         (json \ "email").as[String]
       )
+    )
   }
 
   def signin() = Action { Redirect(FACEBOOK.fullSignInUrl) }
